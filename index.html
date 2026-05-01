@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edukasi Kesehatan Kehamilan pada Ibu Hamil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-image: url('https://i.pinimg.com/1200x/7e/30/a1/7e30a1531cdaa0349af7109ccf9e00db.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.85);
+            z-index: -1;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 30px 0 10px;
+            color: #2e7d32;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 30px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            cursor: pointer;
+            aspect-ratio: 3 / 4;
+            display: flex;
+            flex-direction: column;
+            max-width: 250px;
+            margin: auto;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 70%;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container .card:last-child {
+            grid-column: 2 / 3;
+        }
+
+        .overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.5s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .overlay::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: var(--bg);
+            background-size: cover;
+            background-position: center;
+            transform: scale(1);
+            transition: 0.8s;
+            z-index: -1;
+        }
+
+        .overlay.active::before {
+            transform: scale(1.25);
+            filter: blur(20px) brightness(0.5);
+        }
+
+        .overlay-content {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            max-width: 650px;
+            width: 90%;
+            color: white;
+            max-height: 80vh;
+            overflow-y: auto;
+            line-height: 1.7;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 8px 18px;
+            border: none;
+            background: #43a047;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Edukasi Kesehatan Kehamilan pada Ibu Hamil</h1>
+
+<p class="intro">
+Edukasi kesehatan kehamilan bagi ibu hamil merupakan upaya penting untuk meningkatkan pengetahuan dan kesadaran dalam menjaga kesehatan diri dan janin selama masa kehamilan. Melalui edukasi yang tepat, ibu hamil diharapkan mampu memahami perubahan yang terjadi, memenuhi kebutuhan gizi, serta mengenali tanda bahaya sejak dini sehingga dapat mencegah terjadinya komplikasi dan mendukung kehamilan yang sehat dan aman.
+</p>
+
+<div class="container">
+
+<div class="card" onclick="openDetail('Pentingnya ANC', data1, img1)">
+<img src="https://i.pinimg.com/originals/5c/95/be/5c95be417ced764ddbf76f30ae6cb396.jpg">
+<h3>Pentingnya ANC</h3>
+</div>
+
+<div class="card" onclick="openDetail('Kesehatan Reproduksi', data2, img2)">
+<img src="https://stikesmus.ac.id/wp-content/uploads/2021/02/ibu-hamil-768x573-1.png">
+<h3>Kesehatan Reproduksi</h3>
+</div>
+
+<div class="card" onclick="openDetail('Trimester 1', data3, img3)">
+<img src="https://i.pinimg.com/736x/7d/71/8f/7d718fda8f3c07ee205db61dcd0ddd2a.jpg">
+<h3>Trimester 1</h3>
+</div>
+
+<div class="card" onclick="openDetail('Trimester 2', data4, img4)">
+<img src="https://i.pinimg.com/736x/3f/1c/0c/3f1c0c3c496117c84ab5725ed80efe7f.jpg">
+<h3>Trimester 2</h3>
+</div>
+
+<div class="card" onclick="openDetail('Trimester 3', data5, img5)">
+<img src="https://i.pinimg.com/originals/f6/52/c4/f652c432c5923d484ec4a528dcf1d2fc.jpg">
+<h3>Trimester 3</h3>
+</div>
+
+<div class="card" onclick="openDetail('Nutrisi Ibu Hamil', data6, img6)">
+<img src="https://i.pinimg.com/736x/d1/6f/54/d16f54c97012967dc77e41689f75c762.jpg">
+<h3>Nutrisi</h3>
+</div>
+
+<div class="card" onclick="openDetail('Pencegahan', data7, img7)">
+<img src="https://i.pinimg.com/originals/5d/6f/58/5d6f58cff828ebae34d07a3068bdbf77.jpg">
+<h3>Pencegahan</h3>
+</div>
+
+</div>
+
+<div id="overlay" class="overlay" onclick="closeDetail(event)">
+<div class="overlay-content" onclick="event.stopPropagation()">
+<h2 id="title"></h2>
+<p id="desc"></p>
+<button onclick="closeDetail()">Tutup</button>
+</div>
+</div>
+
+<script>
+
+/* ===== FULL MATERI TANPA DIPOTONG ===== */
+
+const data1 = `Pentingnya Antenatal Care (ANC) untuk ibu hamil:<br>
+Antenatal Care (ANC) sangat penting karena berfungsi untuk memantau kesehatan ibu dan janin secara rutin selama kehamilan, sehingga risiko komplikasi seperti perdarahan, eklampsia, dan bayi dengan berat badan lahir rendah dapat dideteksi dan ditangani lebih dini. Pemeriksaan ini juga membantu ibu mempersiapkan persalinan, masa nifas, serta pemberian ASI eksklusif dengan lebih baik. Dengan melakukan ANC secara teratur di fasilitas kesehatan, ibu hamil dapat mengurangi risiko kematian ibu dan bayi, sehingga menjadi salah satu upaya efektif dalam meningkatkan keselamatan dan kesehatan ibu serta bayi.`
+
+const data2 = `Menjaga kesehatan reproduksi<br><br>
+Masa kehamilan adalah fase penting yang membutuhkan perhatian ekstra agar ibu dan janin tetap sehat. Hal-hal yang perlu dijaga antara lain:<br><br>
+- Kebersihan area kewanitaan<br>
+Jaga kebersihan dengan air bersih, hindari sabun keras, gunakan pakaian dalam katun, dan ganti secara rutin.<br><br>
+- Pemeriksaan kehamilan rutin<br>
+Periksa ke tenaga kesehatan minimal 6 kali untuk memantau kondisi ibu dan janin serta deteksi dini risiko.<br><br>
+- Nutrisi seimbang<br>
+Penuhi kebutuhan protein, zat besi, asam folat, dan kalsium untuk mendukung pertumbuhan janin.<br><br>
+- Pencegahan infeksi<br>
+Jaga kebersihan diri, terapkan pola hidup sehat, dan lakukan pemeriksaan rutin.<br><br>
+- Menghindari faktor risiko<br>
+Jauhi rokok, alkohol, obat tanpa resep, dan bahan kimia berbahaya.<br><br>
+- Kesehatan mental<br>
+Kelola stres, dapatkan dukungan keluarga, dan konsultasi jika merasa cemas.<br><br>
+- Istirahat dan aktivitas<br>
+Cukup tidur (7–8 jam) dan lakukan olahraga ringan seperti jalan kaki atau senam hamil.`
+
+const data3 = `Ciri-ciri dan tanda bahaya pada trimester 1<br><br>
+Pada trimester pertama kehamilan (0–12 minggu), tubuh ibu mengalami berbagai perubahan berupa bentuk adaptasi terhadap perkembangan janin. Perubahan ini dapat berupa ciri-ciri normal yang umum dirasakan, namun juga terdapat beberapa tanda bahaya yang perlu diwaspadai karena dapat mengindikasikan adanya gangguan pada kehamilan.<br><br>
+
+Ciri-ciri trimester normal 1:<br>
+* Mual dan muntah , terutama pagi hari<br>
+* Mudah lelah dan mengantuk<br>
+* Payudara terasa nyeri dan membesar<br>
+* Sering membuang air kecil<br>
+* Perubahan suasana hati (mood swing)<br>
+* Ngidam atau tidak suka makanan tertentu<br>
+* Sedikit kram perut ringan (karena rahim mulai berkembang)<br><br>
+
+⚠️ Tanda bahaya trimester 1:<br>
+* Perdarahan dari jalan lahir<br>
+* Bisa ringan hingga banyak, berisiko keguguran atau kehamilan ektopik<br>
+* Nyeri perut hebat atau tajam<br>
+* Terutama jika disertai pendarahan<br>
+* Mual muntah berlebihan (hiperemesis gravidarum)<br>
+* Sampai tidak bisa makan/minum, bisa menyebabkan dehidrasi<br>
+* Suhu tinggi (>38°C)<br>
+* Bisa menandakan infeksi<br>
+* Pusing berat atau pingsan<br>
+* Bisa berkaitan dengan tekanan darah atau kondisi lain<br>
+* Keluar cairan berbau tidak sedap dari vagina<br>
+* Tanda kemungkinan infeksi`
+
+const data4 = `Ciri-ciri dan tanda bahaya pada trimester 2<br><br>
+Ciri-ciri normal:<br>
+* Perut mulai membesar seiring pertumbuhan janin yang semakin pesat<br>
+* Gerakan janin mulai terasa (quickening), biasanya ibu mulai merasakan tendangan ringan<br>
+* Nafsu makan meningkat karena kebutuhan nutrisi ibu dan janin bertambah<br>
+* Berat badan bertambah secara bertahap dan normal<br>
+* Kadang muncul keluhan ringan seperti pusing, nyeri punggung, atau kram kaki akibat perubahan hormon dan postur tubuh<br><br>
+
+Tanda bahaya:<br>
+* Perdarahan dari jalan lahir yang dapat mengindikasikan gangguan kehamilan<br>
+* Nyeri perut hebat yang tidak normal dan berlangsung terus-menerus<br>
+* Sakit kepala berat disertai pandangan kabur yang bisa menjadi tanda tekanan darah tinggi<br>
+* Pembengkakan pada wajah dan tangan (edema berlebihan) yang perlu diwaspadai<br>
+* Gerakan janin berkurang atau tidak terasa dibandingkan biasanya<br>
+* Demam tinggi yang dapat membahayakan kondisi ibu dan janin<br>
+* Keluar cairan dari vagina (dugaan ketuban pecah dini) sebelum waktunya`
+
+const data5 = `Ciri-ciri dan tanda bahaya pada trimester 3<br><br>
+Trimester 3 (Usia kehamilan 28-40 minggu)<br><br>
+Ciri-ciri normal :<br>
+* Perut semakin besar karena janin terus berkembang hingga mendekati persalinan<br>
+* Gerakan janin semakin kuat dan sering, terasa lebih jelas oleh ibu<br>
+* Sering buang air kecil akibat tekanan rahim pada kandung kemih<br>
+* Sesak napas ringan karena tekanan rahim pada diafragma<br>
+* Muncul kontraksi palsu (Braxton Hicks) sebagai persiapan tubuh menuju persalinan<br>
+* Nyeri punggung dan panggul akibat beban tubuh yang meningkat<br><br>
+
+Tanda bahaya:<br>
+* Perdarahan dari vagina yang dapat menandakan kondisi serius seperti plasenta previa atau solusio plasenta<br>
+* Air ketuban keluar sebelum waktunya yang berisiko infeksi dan persalinan prematur<br>
+* Gerakan janin berkurang atau tidak terasa seperti biasanya<br>
+* Sakit kepala hebat, pandangan kabur, nyeri ulu hati (tanda preeklamsia)<br>
+* Pembengkakan ekstrem pada tangan, kaki, dan wajah yang tidak normal<br>
+* Kejang yang merupakan kondisi darurat (eklamsia)<br>
+* Nyeri perut hebat atau kontraksi sebelum waktunya (prematur) yang perlu segera ditangani`
+
+const data6 = `Nutrisi ibu hamil<br><br>
+Nutrisi ibu hamil harus seimbang dan bergizi karena berperan penting bagi kesehatan ibu dan perkembangan janin. Zat gizi utama yang dibutuhkan meliputi zat besi untuk mencegah Anemia, asam folat untuk pembentukan saraf janin, kalsium untuk tulang, serta protein untuk pertumbuhan jaringan. Sumbernya bisa diperoleh dari sayur, buah, daging, telur, ikan, kacang-kacangan, dan susu.<br><br>
+Selain itu, ibu hamil dianjurkan mengonsumsi tablet tambah darah sesuai anjuran Kementerian Kesehatan Republik Indonesia serta cukup minum air. Pemenuhan nutrisi yang baik membantu mencegah komplikasi dan mendukung tumbuh kembang janin secara optimal.`
+
+const data7 = `Langkah pencegahan infeksi dan tanda bahaya<br><br>
+Pencegahan infeksi dan tanda bahaya pada ibu hamil penting untuk menjaga kesehatan ibu dan janin. Upaya ini dilakukan dengan menjaga kebersihan, mengonsumsi makanan sehat, rutin memeriksakan kehamilan, serta segera memeriksakan diri jika muncul gejala tidak normal.<br><br>
+
+Langkah pencegahan infeksi pada ibu hamil:<br>
+* Menjaga kebersihan diri (mandi, cuci tangan dengan sabun)<br>
+* Mengonsumsi makanan matang dan bergizi<br>
+* Minum air bersih yang cukup<br>
+* Menjaga kebersihan organ intim<br>
+* Menghindari kontak dengan orang yang sedang sakit<br>
+* Menggunakan masker saat diperlukan<br>
+* Rutin pemeriksaan kehamilan (ANC)<br>
+* Mendapatkan imunisasi sesuai anjuran<br><br>
+
+⚠️ Langkah pencegahan tanda bahaya pada ibu hamil:<br>
+* Rutin kontrol kehamilan untuk deteksi dini<br>
+* Mengonsumsi makanan bergizi seimbang<br>
+* Istirahat cukup dan hindari aktivitas berat<br>
+* Minum tablet tambah darah/suplemen sesuai anjuran<br>
+* Menghindari rokok, alkohol, dan zat berbahaya<br>
+* Mengelola stres dengan baik<br>
+* Mengenali tanda bahaya kehamilan<br>
+* Segera ke fasilitas kesehatan jika ada keluhan tidak normal`
+
+/* gambar */
+const img1 = "https://i.pinimg.com/originals/5c/95/be/5c95be417ced764ddbf76f30ae6cb396.jpg";
+const img2 = "https://stikesmus.ac.id/wp-content/uploads/2021/02/ibu-hamil-768x573-1.png";
+const img3 = "https://i.pinimg.com/736x/7d/71/8f/7d718fda8f3c07ee205db61dcd0ddd2a.jpg";
+const img4 = "https://i.pinimg.com/736x/3f/1c/0c/3f1c0c3c496117c84ab5725ed80efe7f.jpg";
+const img5 = "https://i.pinimg.com/originals/f6/52/c4/f652c432c5923d484ec4a528dcf1d2fc.jpg";
+const img6 = "https://i.pinimg.com/736x/d1/6f/54/d16f54c97012967dc77e41689f75c762.jpg";
+const img7 = "https://i.pinimg.com/originals/5d/6f/58/5d6f58cff828ebae34d07a3068bdbf77.jpg";
+
+function openDetail(title, desc, bg){
+document.getElementById("title").innerText = title;
+document.getElementById("desc").innerHTML = desc;
+let overlay = document.getElementById("overlay");
+overlay.classList.add("active");
+overlay.style.setProperty('--bg', `url(${bg})`);
+}
+
+function closeDetail(e){
+if(!e || e.target.id=="overlay"){
+document.getElementById("overlay").classList.remove("active");
+}
+}
+
+</script>
+
+</body>
+</html>
